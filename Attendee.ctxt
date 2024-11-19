@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Attendee
+comment1.params=attendeeID\ name\ email
+comment1.target=Attendee(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getAttendeeID()
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=java.lang.String\ getEmail()
+comment5.params=
+comment5.target=java.util.List\ getFeedbackList()
+comment6.params=feedback
+comment6.target=void\ submitFeedback(Feedback)
+numComments=7

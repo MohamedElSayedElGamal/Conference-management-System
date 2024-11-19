@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Feedback
+comment1.params=attendeeID\ comment\ rating
+comment1.target=Feedback(java.lang.String,\ java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getAttendeeID()
+comment3.params=
+comment3.target=java.lang.String\ getComment()
+comment4.params=
+comment4.target=int\ getRating()
+comment5.params=attendeeID
+comment5.target=void\ setAttendeeID(java.lang.String)
+comment6.params=comment
+comment6.target=void\ setComment(java.lang.String)
+comment7.params=rating
+comment7.target=void\ setRating(int)
+numComments=8
