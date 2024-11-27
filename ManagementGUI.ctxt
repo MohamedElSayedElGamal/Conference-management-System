@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ManagementGUI
+comment1.params=attendees
+comment1.target=ManagementGUI(java.util.List)
+comment2.params=
+comment2.target=void\ initialize()
+comment3.params=
+comment3.target=void\ refreshAttendeeList()
+numComments=4

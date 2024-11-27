@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=AttendeeGUI
+comment1.params=attendees
+comment1.target=AttendeeGUI(java.util.List)
+comment2.params=
+comment2.target=void\ initialize()
+numComments=3

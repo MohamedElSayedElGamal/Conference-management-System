@@ -1,5 +1,5 @@
 public class Feedback {
-    private String attendeeID;
+    private String attendeeID; // Linked to attendee
     private String comment;
     private int rating;
 
@@ -21,15 +21,8 @@ public class Feedback {
         return rating;
     }
 
-    public void setAttendeeID(String attendeeID) {
-        this.attendeeID = attendeeID;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
+    @Override
+    public String toString() {
+        return "Comment: " + comment + ", Rating: " + rating;
     }
 }
