@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=AttendeeDatabase
+comment1.params=
+comment1.target=java.util.List\ loadAttendees()
+comment2.params=attendees
+comment2.target=void\ saveAttendees(java.util.List)
+comment3.params=attendee
+comment3.target=void\ addAttendee(Attendee)
+numComments=4

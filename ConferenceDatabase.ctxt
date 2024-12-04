@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ConferenceDatabase
+comment1.params=
+comment1.target=java.util.List\ loadConferences()
+comment2.params=conferenceList
+comment2.target=void\ saveConferences(java.util.List)
+comment3.params=conference
+comment3.target=void\ addConference(Conference)
+numComments=4

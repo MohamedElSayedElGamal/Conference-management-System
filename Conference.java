@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.text.*;
 
 public class Conference {
     private String name;
@@ -8,27 +7,17 @@ public class Conference {
     private Date endDate;
     private List<Session> sessions;
     private List<Attendee> attendees;
+    private List<Feedback> feedbackList;
 
-    // Constructor
     public Conference(String name, Date startDate, Date endDate) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.sessions = new ArrayList<>();
         this.attendees = new ArrayList<>();
+        this.feedbackList = new ArrayList<>();
     }
 
-    // Method to open a session
-    public void openSession(Session session) {
-        sessions.add(session);
-    }
-
-    // Method to register an attendee
-    public void registerAttendee(Attendee attendee) {
-        attendees.add(attendee);
-    }
-
-    // Getters
     public String getName() {
         return name;
     }
@@ -47,5 +36,39 @@ public class Conference {
 
     public List<Attendee> getAttendees() {
         return attendees;
+    }
+
+    public void openSession(Session session) {
+        sessions.add(session);
+    }
+
+    public void registerAttendee(Attendee attendee) {
+        attendees.add(attendee);
+    }
+
+    public static List<Conference> loadConferences() throws Exception {
+        return ConferenceDatabase.loadConferences();
+    }
+
+    public static void saveConferences(List<Conference> conferences) throws Exception {
+        ConferenceDatabase.saveConferences(conferences);
+    }
+
+    public static void addConference(Conference conference) throws Exception {
+        ConferenceDatabase.addConference(conference);
+    }
+    
+     public List<Feedback> getFeedback(String sessionID) {
+        List<Feedback> sessionFeedback = new ArrayList<>();
+        for (Feedback feedback : feedbackList) {
+            if (feedback.getSessionID().equals(sessionID)) {
+                sessionFeedback.add(feedback);
+            }
+        }
+        return sessionFeedback;
+    }
+
+    public void addFeedback(Feedback feedback) {
+        this.feedbackList.add(feedback);
     }
 }

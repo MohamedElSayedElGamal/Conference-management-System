@@ -1,7 +1,17 @@
 #BlueJ class context
 comment0.target=AttendeeGUI
-comment1.params=attendees
-comment1.target=AttendeeGUI(java.util.List)
+comment1.params=conference
+comment1.target=AttendeeGUI(Conference)
 comment2.params=
-comment2.target=void\ initialize()
-numComments=3
+comment2.target=void\ initUI()
+comment3.params=
+comment3.target=void\ registerForSession()
+comment4.params=
+comment4.target=void\ viewSessions()
+comment5.params=
+comment5.target=void\ viewSchedule()
+comment6.params=
+comment6.target=void\ submitFeedback()
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8

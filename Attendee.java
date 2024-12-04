@@ -1,20 +1,16 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Attendee {
     private String attendeeID;
     private String name;
     private String email;
-    private String feedbackComment;
-    private Integer feedbackRating; // Use Integer to allow null for no feedback.
+    private List<Session> schedule;
 
-    public Attendee(String attendeeID, String name, String email, String feedbackComment, Integer feedbackRating) {
+    public Attendee(String attendeeID, String name, String email) {
         this.attendeeID = attendeeID;
         this.name = name;
         this.email = email;
-        this.feedbackComment = feedbackComment;
-        this.feedbackRating = feedbackRating;
+        this.schedule = new ArrayList<>();
     }
 
     public String getAttendeeID() {
@@ -29,57 +25,31 @@ public class Attendee {
         return email;
     }
 
-    public String getFeedbackComment() {
-        return feedbackComment;
+    public List<Session> getSchedule() {
+        return schedule;
     }
 
-    public Integer getFeedbackRating() {
-        return feedbackRating;
+    public void addToSchedule(Session session) {
+        schedule.add(session);
     }
 
-    public void submitFeedback(String comment, int rating) {
-        this.feedbackComment = comment;
-        this.feedbackRating = rating;
+    public void removeFromSchedule(Session session) {
+        schedule.remove(session);
     }
 
-    @Override
-    public String toString() {
-        return attendeeID + "," + name + "," + email + "," +
-                (feedbackComment != null ? feedbackComment : "") + "," +
-                (feedbackRating != null ? feedbackRating : "");
+    public String generateCertificate() {
+        return "Certificate of Attendance for " + name + " for attending " + schedule.size() + " sessions.";
     }
 
-    // Load attendees from a single CSV file
-    public static List<Attendee> loadFromCSV(String filePath) {
-        List<Attendee> attendees = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 3) { // Ensure minimum data for attendee
-                    String id = parts[0];
-                    String name = parts[1];
-                    String email = parts[2];
-                    String comment = parts.length > 3 ? parts[3] : null;
-                    Integer rating = (parts.length > 4 && !parts[4].isEmpty()) ? Integer.parseInt(parts[4]) : null;
-                    attendees.add(new Attendee(id, name, email, comment, rating));
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Error loading attendees: " + e.getMessage());
-        }
-        return attendees;
+    public static List<Attendee> loadAttendees() throws Exception {
+        return AttendeeDatabase.loadAttendees();
     }
 
-    // Save attendees to a single CSV file
-    public static void saveToCSV(String filePath, List<Attendee> attendees) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
-            for (Attendee attendee : attendees) {
-                bw.write(attendee.toString());
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            System.err.println("Error saving attendees: " + e.getMessage());
-        }
+    public static void saveAttendees(List<Attendee> attendees) throws Exception {
+        AttendeeDatabase.saveAttendees(attendees);
+    }
+
+    public static void addAttendee(Attendee attendee) throws Exception {
+        AttendeeDatabase.addAttendee(attendee);
     }
 }
