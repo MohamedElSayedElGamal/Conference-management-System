@@ -1,9 +1,13 @@
 #BlueJ class context
 comment0.target=SessionDatabase
 comment1.params=
-comment1.target=java.util.List\ loadSessions()
-comment2.params=sessions
-comment2.target=void\ saveSessions(java.util.List)
-comment3.params=session
-comment3.target=void\ addSession(Session)
-numComments=4
+comment1.target=java.util.List\ loadAllSessions()
+comment2.params=
+comment2.target=java.util.List\ loadMinimalSessions()
+comment3.params=sessionID
+comment3.target=Session\ loadSessionByID(java.lang.String)
+comment4.params=sessions
+comment4.target=void\ saveAllSessions(java.util.List)
+comment5.params=session
+comment5.target=void\ addSession(Session)
+numComments=6

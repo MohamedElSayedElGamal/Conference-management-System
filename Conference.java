@@ -18,7 +18,7 @@ public class Conference {
         this.feedbackList = new ArrayList<>();
     }
 
-    public String getName() {
+    public String getConferanceName() {
         return name;
     }
 
@@ -58,15 +58,6 @@ public class Conference {
         ConferenceDatabase.addConference(conference);
     }
     
-     public List<Feedback> getFeedback(String sessionID) {
-        List<Feedback> sessionFeedback = new ArrayList<>();
-        for (Feedback feedback : feedbackList) {
-            if (feedback.getSessionID().equals(sessionID)) {
-                sessionFeedback.add(feedback);
-            }
-        }
-        return sessionFeedback;
-    }
 
     public void addFeedback(Feedback feedback) {
         this.feedbackList.add(feedback);

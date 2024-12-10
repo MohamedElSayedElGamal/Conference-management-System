@@ -1,5 +1,3 @@
-import java.io.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +12,8 @@ public class Session {
     private String room;
     private List<Attendee> attendees;
     private List<Feedback> feedbackList;
-    
+
+    // Full Constructor
     public Session(String sessionID, String sessionName, Speaker speaker, Date date, String time, String room) {
         this.sessionID = sessionID;
         this.sessionName = sessionName;
@@ -26,6 +25,15 @@ public class Session {
         this.feedbackList = new ArrayList<>();
     }
 
+    // Minimal Constructor
+    public Session(String sessionID, String sessionName) {
+        this.sessionID = sessionID;
+        this.sessionName = sessionName;
+        this.attendees = new ArrayList<>();
+        this.feedbackList = new ArrayList<>();
+    }
+
+    // Getters
     public String getSessionID() {
         return sessionID;
     }
@@ -54,28 +62,44 @@ public class Session {
         return attendees;
     }
 
+    // Register an attendee for the session
     public void registerAttendance(Attendee attendee) {
-        attendees.add(attendee);
-        attendee.addToSchedule(this);
+        if (!attendees.contains(attendee)) {
+            attendees.add(attendee);
+            attendee.addToSchedule(this);
+        } else {
+            System.err.println("Attendee " + attendee.getName() + " is already registered for session: " + sessionName);
+        }
     }
-    
+
+    // Add feedback for the session
     public void addFeedback(Feedback feedback) {
-        feedbackList.add(feedback);
+        if (!feedbackList.contains(feedback)) {
+            feedbackList.add(feedback);
+        } else {
+            System.err.println("Duplicate feedback detected for session: " + sessionName);
+        }
     }
-    
+
+    // Get session details in a formatted string
     public String getSessionDetails() {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        return sessionName + " with " + speaker.getName() + " on " + sdf.format(date) + " at " + time + " in " + room;
+        return sessionName + " with " + (speaker != null ? speaker.getName() : "Unknown Speaker") + " on "
+                + (date != null ? sdf.format(date) : "Unknown Date") + " at " + (time != null ? time : "Unknown Time")
+                + " in " + (room != null ? room : "Unknown Room");
     }
 
+    // Load all sessions using SessionDatabase
     public static List<Session> loadSessions() throws Exception {
-        return SessionDatabase.loadSessions();
+        return SessionDatabase.loadAllSessions();
     }
 
+    // Save all sessions using SessionDatabase
     public static void saveSessions(List<Session> sessions) throws Exception {
-        SessionDatabase.saveSessions(sessions);
+        SessionDatabase.saveAllSessions(sessions);
     }
 
+    // Add a new session using SessionDatabase
     public static void addSession(Session session) throws Exception {
         SessionDatabase.addSession(session);
     }

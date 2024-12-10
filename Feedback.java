@@ -1,35 +1,20 @@
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Feedback {
-    private String feedbackID;
     private String attendeeID;
-    private String sessionID;
     private String comment;
     private int rating;
 
-    public Feedback(String feedbackID, String attendeeID, String sessionID, String comment, int rating) {
-        this.feedbackID = feedbackID;
+    // Constructor without session ID
+    public Feedback(String attendeeID, String comment, int rating) {
         this.attendeeID = attendeeID;
-        this.sessionID = sessionID;
         this.comment = comment;
         this.rating = rating;
     }
 
-    public String getFeedbackID() {
-        return feedbackID;
-    }
-
     public String getAttendeeID() {
         return attendeeID;
-    }
-
-    public String getSessionID() {
-        return sessionID;
     }
 
     public String getComment() {
@@ -40,15 +25,16 @@ public class Feedback {
         return rating;
     }
 
-    public static List<Feedback> loadFeedback() throws Exception {
-        return FeedbackDatabase.loadFeedback();
-    }
+    // Path to the feedback CSV file
+    private static final String FEEDBACK_FILE = "D:\\Java_project\\feedback.csv";
 
-    public static void saveFeedback(List<Feedback> feedbackList) throws Exception {
-        FeedbackDatabase.saveFeedback(feedbackList);
-    }
-
-    public static void addFeedback(Feedback feedback) throws Exception {
-        FeedbackDatabase.addFeedback(feedback);
+    // Add a new feedback entry to the CSV file
+    public static void addFeedback(Feedback feedback) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FEEDBACK_FILE, true))) {
+            // Append the new feedback entry to the file without session ID
+            bw.write(feedback.getAttendeeID() + "," 
+                    + feedback.getComment() + "," + feedback.getRating());
+            bw.newLine();
+        }
     }
 }
