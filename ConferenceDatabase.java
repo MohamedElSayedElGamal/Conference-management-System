@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ConferenceDatabase {
 
-    private static final String CONFERENCE_FILE = "C:\\New folder\\Java_project\\conference.csv";
+    private static final String CONFERENCE_FILE = "conference.csv";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
     // Load all conferences from the CSV file

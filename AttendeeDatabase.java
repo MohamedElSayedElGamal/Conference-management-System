@@ -24,7 +24,7 @@ import java.util.Collections;       // For using utility methods like emptyList(
 
 
 public class AttendeeDatabase {
-    private static final String ATTENDEE_FILE = "C:\\New folder\\Java_project\\attendees.csv";
+    private static final String ATTENDEE_FILE = "attendees.csv";
     private static final Map<String, Attendee> attendeeMap = new HashMap<>(); // Cached map for fast lookup
 
     // Static block to initialize the map when the class is loaded

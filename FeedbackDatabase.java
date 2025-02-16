@@ -4,7 +4,7 @@ import java.util.*;
 public class FeedbackDatabase {
 
     // Path to the feedback CSV file
-    private static final String FEEDBACK_FILE = "C:\\New folder\\Java_project\\feedback.csv";
+    private static final String FEEDBACK_FILE = "feedback.csv";
 
     // Add a single feedback entry to the CSV file
     public static void addFeedback(Feedback feedback) throws IOException {

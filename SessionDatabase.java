@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 public class SessionDatabase {
 
-    private static final String SESSION_FILE = "C:\\New folder\\Java_project\\sessions.csv"; // Path to session CSV file
+    private static final String SESSION_FILE = "sessions.csv"; // Path to session CSV file
     private static Map<String, Session> sessionMap; // Map for fast lookup by Session ID
 
     static {

@@ -26,7 +26,7 @@ public class Feedback {
     }
 
     // Path to the feedback CSV file
-    private static final String FEEDBACK_FILE = "D:\\Java_project\\feedback.csv";
+    private static final String FEEDBACK_FILE = "feedback.csv";
 
     // Add a new feedback entry to the CSV file
     public static void addFeedback(Feedback feedback) throws IOException {
